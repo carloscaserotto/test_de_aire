@@ -1,0 +1,21 @@
+<h1>Editar Doctor</h1>
+<%= form_with model: @doctor do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+  <div class="field">
+    <%= f.label :speciality %><br />
+    <%= f.text_field :speciality%>
+  </div>
+  <div class="field">
+    <%= f.label :matricula %><br />
+    <%= f.text_field :mn %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Actualizar" %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back %>
+

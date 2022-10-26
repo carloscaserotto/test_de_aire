@@ -1,0 +1,22 @@
+<h2>Centro Test de Aire Espirado</h2>
+<%= image_tag "vilella", height: 60,  id:"imagen_vilella", class:"center" %>
+<h2 class="text_center">
+Centro medico VILELLA
+</h2>
+<p class="text_center"><strong>TEST DE H2 EN AIRE ESPIRADO</strong></p>
+<p><span id="fecha" class="date">Fecha: <%= @date %></span></p>
+
+<p class="navbar-text float-right">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.name %></strong>-mn:<strong><%= current_user.mn %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+</p>
+
+<%= link_to "Ver pacientes", patients_path %>
+<%= link_to "Ver Test", tdas_path %>
+

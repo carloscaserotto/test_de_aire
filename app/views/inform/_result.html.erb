@@ -1,0 +1,12 @@
+<table id="tabla_chart">
+  <tr>
+    <th>Minutos</th>
+    <th>PPM_H2</th>
+  </tr>
+  <tr>
+    <% @minutos.each_with_index do |dato,index| %>
+    <td id="index_<%=index%>"><%= dato %> </td>
+    <td><input id="dato_<%=index%>" /> </td>
+  </tr>
+  <% end %>
+</table>

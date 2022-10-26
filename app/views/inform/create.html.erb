@@ -1,0 +1,70 @@
+<%= stylesheet_link_tag 'style' %>
+
+<%= image_tag "vilella", height: 60,  id:"imagen_vilella", class:"center" %>
+<h2 class="text_center">
+Centro medico VILELLA
+</h2>
+<p class="text_center"><strong>TEST DE H2 EN AIRE ESPIRADO</strong></p>
+<p><span id="fecha" class="date">Fecha: <%= @date %></span></p>
+
+<%= form_with url: "/show_table" , local: false, id:"form" do |form| %>
+  <%= form.label :datos, "Tipo de estudio - Sustrato:" %>  
+  <%= form.collection_select :datos, Tda.all, :minute,:name,selected: "lactulosa" %>
+  
+  <p><strong>Nombre del Paciente:</strong> <span id="paciente"><%= @patient.name%></span> - 
+  <strong>Cobertura medica:</strong> <span id="cobertura"><%= @patient.cobertura%></span></p>
+  <%= form.label :solicitante, "Medico solicito el estudio:" %>
+  <%= form.text_field :solicitante, id:"medico_solicitante", value:"Juan"%>
+  <input type="text" name="Thing" value="" />
+  <p><strong>Medico reviso el estudio: <span id="revisor"><%= current_user.name %></span>-
+   <strong>Especialidad:</strong><span id="especialidad"><%= current_user.speciality %></span> - 
+   <strong>Matricula:</strong><span id="matricula"><%= current_user.mn %></span>  
+  </p>
+  <%= form.label :comentario, "Comentario:" %>
+  <%= form.text_field :comentario, id:"comentario" %><br>
+  <%= form.submit 'Elegir' , id:"elegir"%>
+<% end %>
+<br>
+
+
+
+
+<div class="grid-container">
+
+  <div id="results"></div>
+  
+  <div>
+    <%= form_with url: "/chart" , local: false, id:"chart_form" do |form| %>
+      <%= form.text_field :minutos, type: 'hidden', id: 'minutos'%>
+      <%= form.text_field :ppmh2, type: 'hidden', id: 'ppmh2'%>
+      <%= form.submit 'Graficar' , id:"graficar_chart"%>
+    <% end %>
+  </div>
+
+  <div>
+    <canvas id="myChart" style="width:100%;max-width:500px" ></canvas><br>
+  </div>
+
+  <!-- <div id="chart_results"></div> -->
+
+  <div>
+    <%= form_with url: "pdf", method: :post, id:"form" do |form| %>
+        <%= form.text_field :sustrato, type: 'hidden', id: 'pdf_sustrato',value: "Fructuosa 25 gr" %>
+        <%= form.text_field :paciente, type: 'hidden', id: 'pdf_paciente',value: "Carli" %>
+        <%= form.text_field :cobertura_medica, type: 'hidden', id: 'pdf_cobertura_medica',value: "OSDE" %>
+        <%= form.text_field :medico_solicitante, type: 'hidden', id: 'pdf_medico_solicitante',value: "Caro" %>
+        <%= form.text_field :medico_revisor, type: 'hidden', id: 'pdf_medico_revisor',value: "Caro" %>
+        <%= form.text_field :especialidad_medica, type: 'hidden', id: 'pdf_especialidad_medica',value: "Caro" %>
+        <%= form.text_field :matricula_medica, type: 'hidden', id: 'pdf_matricula_medica',value: "Caro" %>
+        <%= form.text_field :comentario, type: 'hidden', id: 'pdf_comentario',value: "Perfil fermentativo normal" %>
+        <%= form.text_field :minutos, type: 'hidden', id: 'pdf_minutos',value: "" %>
+        <%= form.text_field :ppmh2, type: 'hidden', id: 'pdf_ppmh2',value: "" %>
+        <%= form.text_field :imagen, type: 'hidden', id: 'pdf_chart', value:"" %>
+        <%= form.submit 'Download to pdf', id:"form_to_pdf"%>
+    <% end %>
+  </div>
+  
+</div>
+
+<%= javascript_pack_tag 'chart' %>
+<%= javascript_pack_tag 'doctors' %>

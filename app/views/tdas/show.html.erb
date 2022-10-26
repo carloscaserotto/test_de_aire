@@ -1,0 +1,15 @@
+<h1>Test de Aire</h1>
+
+<p>Nombre: <%= @tda.name %> 
+   - Intervalos: <%= @tda.minute %> 
+<%= link_to "Editar", edit_tda_path(@tda) %>|
+<%= link_to "Borrar", tda_path(@tda), data: {
+                    method: :delete,
+                    confirm: "Desea borrar el test de aire?"
+                  } %>
+</p> 
+<br>
+<%= link_to "Ver todos los Tests", tdas_path %>
+
+
+

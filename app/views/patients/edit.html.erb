@@ -1,0 +1,44 @@
+<h1>Editar Paciente</h1>
+<%= form_with model: @patient do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
+  </div>
+  <div class="field">
+    <%= f.label :cobertura %><br />
+    <%= f.select :cobertura, 
+                  [["ACA SALUD", "aca_salud"], 
+                  ["ACCORD SALUD", "accord"], 
+                  ["ACTIVA SALUD", "activa"], 
+                  ["ALTA SALUD", "alta"], 
+                  ["AMIL - PROGRAMA DE SALUD", "amil"], 
+                  ["AMIS - ASISTENCIA MÉDICA INTEGRAL DE SALUD", "amis"], 
+                  ["ANDAR", "andar"], 
+                  ["APSOT", "apsot"], 
+                  ["ARROYO PROGRAMAS MÉDICOS", "arroyo"], 
+                  ["ASMEPRIV (ASISTIR SALUD)", "asmepriv"], 
+                  ["CENTRO MÉDICO PUEYRREDÓN", "puerrredon"], 
+                  ["COBER MED", "cobermed"], 
+                  ["COLEGIO DE ESCRIBANOS CAPITAL", "escribanos"]]
+    %><br />
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
+    <%= f.label :dni %><br />
+    <%= f.text_field :dni, autofocus: true, autocomplete: "dni" %>
+  </div>
+ 
+  <div class="actions">
+    <%= f.submit "Actualizar" %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back %>
+

@@ -1,0 +1,59 @@
+<style>
+.current{
+  font-weight:bold;
+}
+.wrapper {
+    
+    
+    
+}
+table {
+  font-family: arial, sans-serif;  
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<h1>Listado de doctores</h1>
+<div class="wrapper">
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Especialidad</th>
+    <th>Matricula</th>
+    <th colspan="4">Acciones</th>
+  </tr>
+<% @doctors.each do |doctor|%>
+  <tr>
+    <td><%= doctor.name%></td>
+    <td><%= doctor.speciality%></td>
+    <td><%= doctor.mn%></td>
+    <td><%= link_to "VER",doctor_path(doctor), class:"btn btn-primary far fa-eye btn-sm" %></td>
+    <td><%= link_to "Editar", edit_doctor_path(doctor),class:"btn btn-success far fa-edit btn-sm" %></td>
+    <td><%= link_to "Borrar", doctor_path(doctor), data: {method: :delete, 
+                            confirm: "Desea borrar el doctor?"}, 
+                            class:"btn btn-danger far fa-trash-alt btn-sm"%></td>
+    
+  </tr>
+<% end %>
+</table>    
+</div>
+
+
+  
+
+
+<br>
+<br>
+<br>
+<%= link_to "Ingresar nuevo doctor", new_doctor_path %>|
+<%= link_to "Ver Test disponibles", tdas_path %>
+

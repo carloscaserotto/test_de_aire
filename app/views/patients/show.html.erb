@@ -1,0 +1,16 @@
+<h1>Paciente: </h1>
+<p>Nombre: <%= @patient.name %></p>
+<p>Apellido: <%= @patient.lastname %></p>
+<p>Email: <%= @patient.email %></p>
+<p>DNI: <%= @patient.dni %></p>
+<p>Cobertura: <%= @patient.cobertura %></p>
+
+<%= link_to "Editar paciente", edit_patient_path(@patient) %>|
+<%= link_to "Borrar Paciente", patient_path(@patient), data: {
+                    method: :delete,
+                    confirm: "Desea borrar el paciente?"
+                  } %>
+<br>
+<%= link_to "Ver pacientes", patients_path %>
+
+

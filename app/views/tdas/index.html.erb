@@ -1,0 +1,46 @@
+<style>
+
+table {
+  font-family: arial, sans-serif;  
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<h1>Listado de Test disponibles</h1>
+
+<table>
+<tr>
+    <th>Sustrato</th> 
+    <th>Intervalos</th> 
+    <th>Acciones</th> 
+</tr>
+<% @tdas.each do |tda|%>
+<tr>
+    <td><%= tda.name%></td>
+    <td><%= tda.minute%></td>
+    <td><%= link_to "Ver", tda_path(tda) %>|
+         <%= link_to "Editar", edit_tda_path(tda) %>|
+         <%= link_to "Borrar", tda_path(tda), data: {
+                            method: :delete,
+                            confirm: "Desea borrar el test?"} %>
+    </td>
+</tr>
+<% end %> 
+</table>
+
+
+<br>
+<br>
+<%= link_to "Crear nuevo Test", new_tda_path %>|
+<%= link_to "Listado pacientes", patients_path %>
+
+

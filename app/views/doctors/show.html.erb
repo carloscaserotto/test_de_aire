@@ -1,0 +1,14 @@
+<h1>Doctor: </h1>
+<p>Nombre: <%= @doctor.name %></p>
+<p>Especialidad: <%= @doctor.speciality %></p>
+<p>Matricula: <%= @doctor.mn %></p>
+
+<%= link_to "Editar", edit_doctor_path(@doctor) %>|
+<%= link_to "Borrar", doctor_path(@doctor), data: {
+                    method: :delete,
+                    confirm: "Desea borrar el doctor?"
+                  } %>
+<br>
+<%= link_to "Ver doctores", doctors_path %>
+
+

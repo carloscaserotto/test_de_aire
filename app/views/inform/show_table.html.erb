@@ -1,0 +1,64 @@
+
+
+<%= @minutos %>
+<%= @medico_solicitante %>
+
+
+<table>
+  <tr>
+    <th>Minutos</th>
+    <th>PPM_H2</th>
+  </tr>
+<% @minutos.each do |dato| %>
+  <tr>
+    <td> <%= dato %> </td> - <td><input type="text" id="ppmh2_0" value=""></td><br>
+  </tr>
+</table>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>Minutos</th>
+    <th>PPM_H2</th>
+  </tr>
+  <tr>
+    <td> 0 </td>
+    <td><input type="text" id="ppmh2_0" value="2"></td>
+  </tr>
+  <tr>
+    <td> 15 </td>
+    <td><input type="text" id="ppmh2_15" value="4"></td>
+  </tr>
+  <tr>
+    <td> 30 </td>
+    <td><input type="text" id="ppmh2_30" value="1"></td>
+  </tr>
+  <tr>
+    <td> 45 </td>
+    <td><input type="text" id="ppmh2_45" value="6"></td>
+  </tr>
+  <tr>
+    <td> 60 </td>
+    <td><input type="text" id="ppmh2_60" value="7"></td>
+  </tr>
+  <tr>
+    <td> 75 </td>
+    <td><input type="text" id="ppmh2_75" value="2"></td>
+  </tr>
+  <tr>
+    <td> 90 </td>
+    <td><input type="text" id="ppmh2_90" value="3"></td>
+  </tr>
+  <tr>
+    <td> 120 </td>
+    <td><input type="text" id="ppmh2_120" value="7"></td>
+  </tr>
+</table>
+<%= button_tag 'Generar informe',id:"button"%>
+</div>
+<div>
+<canvas id="myChart" style="width:100%;max-width:500px" ></canvas><br>
+</div>
+<div>
+         

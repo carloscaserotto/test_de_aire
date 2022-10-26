@@ -1,0 +1,64 @@
+<style>
+.current{
+  font-weight:bold;
+}
+.wrapper {
+    
+    
+    
+}
+table {
+  font-family: arial, sans-serif;  
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<h1>Listado de pacientes</h1>
+<div class="wrapper">
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Obra Social</th>
+    <th>Email</th>
+    <th>DNI</th>
+    <th colspan="4">Acciones</th>
+  </tr>
+<% @patients.each do |patient|%>
+  <tr>
+    <td><%= patient.name%></td>
+    <td><%= patient.lastname%></td>
+    <td><%= patient.cobertura%></td>
+    <td><%= patient.email%></td>
+    <td><%= patient.dni%></td>
+    <td><%= link_to "VER",patient_path(patient), class:"btn btn-primary far fa-eye btn-sm" %></td>
+    <td><%= link_to "Editar", edit_patient_path(patient),class:"btn btn-success far fa-edit btn-sm" %></td>
+    <td><%= link_to "Borrar", patient_path(patient), data: {method: :delete, 
+                            confirm: "Desea borrar el paciente?"}, 
+                            class:"btn btn-danger far fa-trash-alt btn-sm"%></td>
+    <td><%= link_to "Informe", "inform/#{patient.id}",class:"btn btn-info far fa-edit btn-sm" %></td>
+    
+  </tr>
+<% end %>
+</table>    
+</div>
+
+
+  
+
+
+<br>
+<br>
+<br>
+<%= link_to "Crear nuevo paciente", new_patient_path %>|
+<%= link_to "Ver Test disponibles", tdas_path %>
+
